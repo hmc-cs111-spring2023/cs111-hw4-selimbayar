@@ -13,19 +13,26 @@ val validColors = List('B', 'Y', 'R', 'G')
 
 /** Get a random color from the list of valid colors */
 def getRandomColor(): Color =
-  ???
+  val random = new Random
+  validColors(random.nextInt(validColors.length)).toChar
 
 /** Given four colors, make a board from them */
 def makeBoardFromColors(c1: Color, c2: Color, c3: Color, c4: Color): Board =
-  ???
+  c1.toString() + c2.toString() + c3.toString() + c4.toString()
 
 /** Create a random board */
 def getRandomBoard(): Board =
-  ???
+  makeBoardFromColors(getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor())
 
 /** Play one round of the game */
 def playRound(board: Board): (Int, Int) =
-  ???
+  val s1 = scala.io.StdIn.readLine("Enter a guess for spot 1: ").charAt(0)
+  val s2 = scala.io.StdIn.readLine("Enter a guess for spot 2: ").charAt(0)
+  val s3 = scala.io.StdIn.readLine("Enter a guess for spot 3: ").charAt(0)
+  val s4 = scala.io.StdIn.readLine("Enter a guess for spot 4: ").charAt(0)
+
+  val usersGuess = makeBoardFromColors(s1, s2, s3, s4)
+  scoreGuess(board, usersGuess)
 
 /** Score a guess
   *
